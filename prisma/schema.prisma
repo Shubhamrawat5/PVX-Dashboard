@@ -16,8 +16,3 @@ model bday {
   place    String
 }
 
-model pgmigrations {
-  id     Int      @id @default(autoincrement())
-  name   String   @db.VarChar(255)
-  run_on DateTime @db.Timestamp(6)
-}
