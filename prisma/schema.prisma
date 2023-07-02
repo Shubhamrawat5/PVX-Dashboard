@@ -16,3 +16,10 @@ model bday {
   place    String
 }
 
+model Admin {
+  id        Int     @id @default(autoincrement())
+  name      String
+  username  String  @unique
+  password  String
+  auth_token String?
+}
