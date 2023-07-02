@@ -1,10 +1,7 @@
-import { LoginPage } from '@components';
 import React from 'react';
 
-const RootAdmin = () => {
-  const isLoggedIn = false;
-
-  return isLoggedIn ? <div>Admin Page</div> : <LoginPage />;
+const index = () => {
+  return <div>index</div>;
 };
 
-export default RootAdmin;
+export default index;
