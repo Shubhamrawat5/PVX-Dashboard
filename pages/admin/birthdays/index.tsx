@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Button } from '@mui/material';
 import { useRouter } from 'next/router';
 import CreateIcon from '@mui/icons-material/Create';
+import { DeleteOutline } from '@mui/icons-material';
 
 const URL = 'http://localhost:3000/api/v1/admin/bdays';
 
@@ -43,6 +44,7 @@ export default function DataTable() {
     {
       field: 'action',
       headerName: 'Action',
+      width: 200,
       sortable: false,
       renderCell: (params) => {
         const href = `/admin/birthdays/${params.row.number}/edit`;
@@ -57,16 +59,42 @@ export default function DataTable() {
             href
           );
         };
+
+        const onDelete = (e) => {
+          e.stopPropagation();
+          const confirm = window.confirm('Are you sure you want to delete this birthday?');
+          if (!confirm) return;
+          axios
+            .delete(URL + `/${params.row.number}`)
+            .then((res) => {
+              setBirthdays((prev) => prev.filter((bday) => bday.number !== params.row.number));
+            })
+            .catch((err) => {
+              console.log({ err });
+            });
+        };
+
         return (
-          <Button
-            onClick={onClick}
-            startIcon={<CreateIcon />}
-            variant="contained"
-            sx={{ height: 30, fontSize: 12 }}
-            color="primary"
-          >
-            Edit
-          </Button>
+          <React.Fragment>
+            <Button
+              onClick={onClick}
+              startIcon={<CreateIcon />}
+              variant="contained"
+              sx={{ fontSize: 12, m: 1 }}
+              color="primary"
+            >
+              Edit
+            </Button>
+            <Button
+              onClick={onDelete}
+              startIcon={<DeleteOutline />}
+              variant="contained"
+              sx={{ fontSize: 12, m: 1 }}
+              color="error"
+            >
+              Delete
+            </Button>
+          </React.Fragment>
         );
       },
     },
@@ -92,7 +120,6 @@ export default function DataTable() {
           },
         }}
         pageSizeOptions={[10, 5]}
-        checkboxSelection
       />
     </div>
   );
