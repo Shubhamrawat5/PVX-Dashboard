@@ -8,12 +8,13 @@ datasource db {
 }
 
 model bday {
-  id       Int      @id @default(autoincrement())
   name     String
   username String
-  date     DateTime @db.Date
-  month    String
+  date     Int
+  month    Int
+  year     Int?
   place    String
+  number   String @id
 }
 
 model Admin {
