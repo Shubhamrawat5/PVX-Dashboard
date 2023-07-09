@@ -3,23 +3,7 @@ import { DataGrid, GridAddIcon, GridColDef, GridValueGetterParams } from '@mui/x
 import axios from 'axios';
 import { Button } from '@mui/material';
 import { useRouter } from 'next/router';
-
-const columns: GridColDef[] = [
-  { field: 'name', headerName: 'Name', width: 130 },
-  { field: 'username', headerName: 'Username', width: 130 },
-  { field: 'date', headerName: 'Date', width: 130 },
-  { field: 'month', headerName: 'Month', width: 130 },
-  { field: 'year', headerName: 'Year', width: 130 },
-  { field: 'place', headerName: 'Place', width: 130 },
-  { field: 'number', headerName: 'Number', width: 130 },
-  {
-    field: 'dob',
-    headerName: 'Date of Birth',
-    width: 130,
-    sortable: false,
-    valueGetter: (params: GridValueGetterParams) => `${params.row.date}/${params.row.month}/${params.row.year}`,
-  },
-];
+import CreateIcon from '@mui/icons-material/Create';
 
 const URL = 'http://localhost:3000/api/v1/admin/bdays';
 
@@ -30,7 +14,6 @@ export default function DataTable() {
     axios
       .get(URL)
       .then((res) => {
-        console.log({ res: res.data });
         setBirthdays(res.data);
       })
       .catch((err) => {
@@ -41,6 +24,53 @@ export default function DataTable() {
   React.useEffect(() => {
     getBirthdays();
   }, []);
+
+  const columns: GridColDef[] = [
+    { field: 'name', headerName: 'Name', width: 130 },
+    { field: 'username', headerName: 'Username', width: 130 },
+    { field: 'date', headerName: 'Date', width: 130 },
+    { field: 'month', headerName: 'Month', width: 130 },
+    { field: 'year', headerName: 'Year', width: 130 },
+    { field: 'place', headerName: 'Place', width: 130 },
+    { field: 'number', headerName: 'Number', width: 130 },
+    {
+      field: 'dob',
+      headerName: 'Date of Birth',
+      width: 130,
+      sortable: false,
+      valueGetter: (params: GridValueGetterParams) => `${params.row.date}/${params.row.month}/${params.row.year}`,
+    },
+    {
+      field: 'action',
+      headerName: 'Action',
+      sortable: false,
+      renderCell: (params) => {
+        const href = `/admin/birthdays/${params.row.number}/edit`;
+
+        const onClick = (e) => {
+          e.stopPropagation();
+          router.push(
+            {
+              pathname: href,
+              query: { bday: JSON.stringify(params.row) },
+            },
+            href
+          );
+        };
+        return (
+          <Button
+            onClick={onClick}
+            startIcon={<CreateIcon />}
+            variant="contained"
+            sx={{ height: 30, fontSize: 12 }}
+            color="primary"
+          >
+            Edit
+          </Button>
+        );
+      },
+    },
+  ];
 
   return (
     <div style={{ height: 'auto', width: '100%' }}>
