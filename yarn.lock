@@ -317,6 +317,17 @@
     prop-types "^15.8.1"
     react-is "^18.2.0"
 
+"@mui/x-data-grid@^6.9.2":
+  version "6.9.2"
+  resolved "https://registry.yarnpkg.com/@mui/x-data-grid/-/x-data-grid-6.9.2.tgz#530497b7592bc8242d591fbdedea771eb130d1c3"
+  integrity sha512-hrjVq3FrbUpioi2GYSWJtU4NR3V4bPwLbXngw07+I21TGOWV1TKeTslkPI+FGVYU3gMjGSSJRFN8gehPlh5Evw==
+  dependencies:
+    "@babel/runtime" "^7.22.5"
+    "@mui/utils" "^5.13.6"
+    clsx "^1.2.1"
+    prop-types "^15.8.1"
+    reselect "^4.1.8"
+
 "@next/env@13.4.7":
   version "13.4.7"
   resolved "https://registry.npmjs.org/@next/env/-/env-13.4.7.tgz"
@@ -2585,6 +2596,11 @@ regexp.prototype.flags@^1.4.3:
     call-bind "^1.0.2"
     define-properties "^1.2.0"
     functions-have-names "^1.2.3"
+
+reselect@^4.1.8:
+  version "4.1.8"
+  resolved "https://registry.yarnpkg.com/reselect/-/reselect-4.1.8.tgz#3f5dc671ea168dccdeb3e141236f69f02eaec524"
+  integrity sha512-ab9EmR80F/zQTMNeneUr4cv+jSwPJgIlvEmVwLerwrWVbpLlBuls9XHzIeTFy4cegU2NHBp3va0LKOzU5qFEYQ==
 
 resolve-from@^4.0.0:
   version "4.0.0"
