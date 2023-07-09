@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
+import { DataGrid, GridAddIcon, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 import axios from 'axios';
+import { Button } from '@mui/material';
+import { useRouter } from 'next/router';
 
 const columns: GridColDef[] = [
   { field: 'name', headerName: 'Name', width: 130 },
@@ -23,6 +25,7 @@ const URL = 'http://localhost:3000/api/v1/admin/bdays';
 
 export default function DataTable() {
   const [birthdays, setBirthdays] = React.useState([]);
+  const router = useRouter();
   const getBirthdays = () => {
     axios
       .get(URL)
@@ -41,6 +44,14 @@ export default function DataTable() {
 
   return (
     <div style={{ height: 'auto', width: '100%' }}>
+      <Button
+        onClick={() => router.push('birthdays/create')}
+        variant="contained"
+        startIcon={<GridAddIcon />}
+        sx={{ marginBottom: 3 }}
+      >
+        Add Birthday
+      </Button>
       <DataGrid
         rows={birthdays}
         columns={columns}

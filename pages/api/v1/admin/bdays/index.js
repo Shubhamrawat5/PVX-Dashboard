@@ -31,7 +31,6 @@ export default async function handler(req, res) {
             year: parseInt(year),
             place,
             number,
-            id: number,
           },
         });
 
