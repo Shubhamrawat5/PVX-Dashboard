@@ -132,7 +132,7 @@ const DashBoard = ({ Component, pageProps }: DashBoardProps) => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Mini variant drawer
+            ProVaxcer Dashboard
           </Typography>
         </Toolbar>
       </AppBar>
