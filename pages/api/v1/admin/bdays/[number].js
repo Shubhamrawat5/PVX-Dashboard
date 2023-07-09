@@ -30,20 +30,20 @@ export default async function handler(req, res) {
           },
         });
 
-        res.status(200).json(updatedBday);
+        return res.status(200).json(updatedBday);
       } catch (error) {
         console.log({ error });
-        res.status(500).json({ error: 'Failed to update bday' });
+        return res.status(500).json({ error: 'Failed to update bday' });
       }
     case 'DELETE':
       try {
         const deletedBday = await prisma.bday.delete({
           where: { number },
         });
-        res.status(200).json(deletedBday);
+        return res.status(200).json(deletedBday);
       } catch (error) {
         console.log({ error });
-        res.status(500).json({ error: 'Failed to delete bday' });
+        return res.status(500).json({ error: 'Failed to delete bday' });
       }
     default:
       return res.status(405).json({ error: 'Method not allowed' });
