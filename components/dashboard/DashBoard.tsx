@@ -97,7 +97,12 @@ const drawerItems = [
   },
 ];
 
-const DashBoard = ({ Component, pageProps }) => {
+interface DashBoardProps {
+  Component: React.ComponentType;
+  pageProps: any;
+}
+
+const DashBoard = ({ Component, pageProps }: DashBoardProps) => {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -108,8 +113,6 @@ const DashBoard = ({ Component, pageProps }) => {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-
-  const labelClick = (href) => {};
 
   return (
     <Box sx={{ display: 'flex' }}>
