@@ -19,6 +19,7 @@ import ListItemText from '@mui/material/ListItemText';
 import CakeIcon from '@mui/icons-material/Cake';
 import NextLink from 'next/link';
 import { Link } from '@mui/material';
+import DashboardIcon from '@mui/icons-material/Dashboard';
 
 const drawerWidth = 240;
 
@@ -90,6 +91,11 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 }));
 
 const drawerItems = [
+  {
+    label: 'Dashboard',
+    icon: <DashboardIcon />,
+    href: '/admin',
+  },
   {
     label: 'Birthdays',
     icon: <CakeIcon />,

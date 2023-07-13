@@ -51,7 +51,7 @@ const FIELDS = [
   },
 ];
 
-const URL = 'http://localhost:3000/api/v1/admin/bdays';
+const URL = 'http://localhost:3000/api/admin/birthdays';
 
 export default function Edit() {
   const router = useRouter();

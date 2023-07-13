@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import CreateIcon from '@mui/icons-material/Create';
 import { DeleteOutline } from '@mui/icons-material';
 
-const URL = 'http://localhost:3000/api/v1/admin/bdays';
+const URL = 'http://localhost:3000/api/admin/birthdays';
 
 export default function DataTable() {
   const [birthdays, setBirthdays] = React.useState([]);
