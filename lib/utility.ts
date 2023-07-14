@@ -7,6 +7,10 @@ class Utility {
     const fullUrl = `${protocol}://${host}/api${url}`;
     return fullUrl;
   };
+
+  capitalize = (str: string) => {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  };
 }
 const util = new Utility();
 
