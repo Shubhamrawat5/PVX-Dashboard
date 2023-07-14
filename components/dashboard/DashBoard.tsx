@@ -178,7 +178,7 @@ const DashBoard = ({ Component, pageProps }: DashBoardProps) => {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader {...pageProps} />
-        <Component />
+        <Component {...pageProps} />
       </Box>
     </Box>
   );

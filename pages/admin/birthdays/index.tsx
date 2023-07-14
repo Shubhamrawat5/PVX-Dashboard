@@ -47,17 +47,11 @@ export default function DataTable() {
       width: 200,
       sortable: false,
       renderCell: (params) => {
-        const href = `/admin/birthdays/${params.row.number}/edit`;
+        const href = `/admin/birthdays/${params.row.number}`;
 
         const onClick = (e) => {
           e.stopPropagation();
-          router.push(
-            {
-              pathname: href,
-              query: { bday: JSON.stringify(params.row) },
-            },
-            href
-          );
+          router.push(href);
         };
 
         const onDelete = (e) => {
