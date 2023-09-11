@@ -1,3 +1,5 @@
+# PVX DASHBOARD
+
 ## Getting Started
 
 First, Setup PostgresSql In your system and set DATABASE_URL and as in config.json
@@ -12,6 +14,8 @@ yarn install
 then, run the migrations:
 
 npx prisma migrate dev
+
+[For seeding: npx prisma db seed]
 
 then, start the server:
 
